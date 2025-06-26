@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Simples</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        #container {
+            margin-top: 30px;
+        }
+
+        #dataHora {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        img {
+            width: 300px;
+            height: 200px;
+            margin-top: 20px;
+            transition: opacity 0.5s ease;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Bem-vindo ao site dos gatos!</h1>
+    <p>Clique no botão para ver a data, hora e alternar as imagens de gatos.</p>
+
+    <div id="container">
+        <button onclick="mostrarDataHora()">Mostrar Data e Hora</button>
+        <div id="dataHora"></div>
+
+        <div id="imagem1">
+            <img src="gato1.jpeg" alt="Gato 1">
+        </div>
+        <div id="imagem2" class="hidden">
+            <img src="gato2.jpeg" alt="Gato 2">
+        </div>
+    </div>
+
+    <script>
+        let imagemAtiva = 1;
+
+        function mostrarDataHora() {
+            const dataHora = new Date();
+            const formatoData = dataHora.toLocaleString('pt-BR', {
+                weekday: 'long',  // Ex: segunda-feira
+                year: 'numeric',  // Ex: 2025
+                month: 'long',    // Ex: julho
+                day: 'numeric',   // Ex: 25
+                hour: 'numeric',  // Ex: 14
+                minute: 'numeric',// Ex: 30
+                second: 'numeric',// Ex: 45
+                hour12: false      // Formato de 24 horas
+            });
+
+            // Atualiza a data e hora
+            document.getElementById("dataHora").innerText = `Data e Hora Atual: ${formatoData}`;
+
+            // Alterna as imagens
+            if (imagemAtiva === 1) {
+                document.getElementById("imagem1").classList.add("hidden");
+                document.getElementById("imagem2").classList.remove("hidden");
+                imagemAtiva = 2;
+            } else {
+                document.getElementById("imagem2").classList.add("hidden");
+                document.getElementById("imagem1").classList.remove("hidden");
+                imagemAtiva = 1;
+            }
+        }
+    </script>
+
+</body>
+</html>
+
+</body>
+</html>
